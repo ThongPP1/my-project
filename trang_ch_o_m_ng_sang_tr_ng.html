@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xin chào anh Thông & anh Hoàng</title>
+  <!-- Google Fonts & Tailwind CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons for modern vector icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    /* Background animated glowing orbs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.65;
+      animation: floatOrb 18s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+    .blob-1 {
+      top: -10%;
+      left: 10%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, #6366f1 0%, #3b82f6 100%);
+      animation-duration: 16s;
+    }
+    .blob-2 {
+      bottom: -15%;
+      right: 5%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, #ec4899 0%, #8b5cf6 100%);
+      animation-duration: 22s;
+    }
+    .blob-3 {
+      top: 40%;
+      left: 55%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, #06b6d4 0%, #3b82f6 100%);
+      animation-duration: 14s;
+    }
+
+    @keyframes floatOrb {
+      0% {
+        transform: translate(0px, 0px) scale(1);
+      }
+      50% {
+        transform: translate(60px, -40px) scale(1.1);
+      }
+      100% {
+        transform: translate(-40px, 50px) scale(0.95);
+      }
+    }
+
+    /* Glassmorphism Card Style */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.35),
+                  0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    }
+
+    .glass-inner-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-inner-card:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-4px);
+    }
+
+    /* Subtle shimmer animation */
+    .shimmer-text {
+      background: linear-gradient(
+        110deg,
+        #ffffff 20%,
+        #93c5fd 40%,
+        #e0e7ff 60%,
+        #ffffff 80%
+      );
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    /* Floating badge pulse */
+    .pulse-dot {
+      animation: pulseAnim 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#090d16] text-slate-100 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  
+  <!-- Glowing Background Orbs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- Decorative Subtle Grid Background -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+  <main class="w-full max-w-3xl glass-card rounded-3xl p-6 sm:p-10 md:p-12 relative z-10 transition-all duration-300">
+    
+    <!-- Top Status Badge -->
+    <div class="flex items-center justify-between flex-wrap gap-4 mb-8">
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-xs sm:text-sm font-medium">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+        <span>Lời Chào Trân Trọng</span>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 font-mono" id="current-time">
+        <i class="ph ph-clock text-indigo-400 text-base"></i>
+        <span id="time-display">Đang cập nhật...</span>
+      </div>
+    </div>
+
+    <!-- Main Heading Section -->
+    <header class="text-center md:text-left space-y-4 mb-10">
+      <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/25 mb-2">
+        <i class="ph ph-sparkle text-2xl"></i>
+      </div>
+      
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight shimmer-text leading-tight">
+        Xin chào anh Thông<br class="hidden sm:inline"> và anh Hoàng!
+      </h1>
+      
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed font-light">
+        Chào mừng hai anh đã quay trở lại. Chúc anh Thông và anh Hoàng một ngày làm việc thật nhiều năng lượng, thuận lợi và gặt hái nhiều thành công rực rỡ!
+      </p>
+    </header>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+      
+      <!-- Card: Anh Thông -->
+      <div class="glass-inner-card rounded-2xl p-5 flex items-start gap-4 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-xl font-bold shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
+          T
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-white tracking-wide truncate">Anh Thông</h2>
+            <span class="text-xs font-medium px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-300 border border-blue-500/20">Thành viên</span>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm mt-1">Chúc anh luôn tràn đầy nhiệt huyết và bứt phá mọi mục tiêu.</p>
+        </div>
+      </div>
+
+      <!-- Card: Anh Hoàng -->
+      <div class="glass-inner-card rounded-2xl p-5 flex items-start gap-4 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-pink-500 flex items-center justify-center text-white text-xl font-bold shadow-md shadow-pink-500/20 group-hover:scale-105 transition-transform duration-300">
+          H
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-white tracking-wide truncate">Anh Hoàng</h2>
+            <span class="text-xs font-medium px-2 py-0.5 rounded-md bg-violet-500/10 text-violet-300 border border-violet-500/20">Thành viên</span>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm mt-1">Chúc anh vạn sự hanh thông và luôn giữ vững phong độ đỉnh cao.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="pt-6 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 text-center sm:text-left">
+        <i class="ph ph-heart text-rose-400 text-lg"></i>
+        <span id="random-wish">"Thành công bắt đầu từ những bước đi kiên trì mỗi ngày."</span>
+      </div>
+
+      <button id="btn-inspire" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 active:scale-95 border border-white/20 text-white text-sm font-medium transition duration-200">
+        <i class="ph ph-arrows-clockwise text-indigo-300 text-base"></i>
+        <span>Đổi lời chúc mới</span>
+      </button>
+    </div>
+
+  </main>
+
+  <script>
+    // Live Clock Update in Vietnamese format
+    function updateLiveClock() {
+      const now = new Date();
+      const options = {
+        weekday: 'short',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      const formatted = now.toLocaleDateString('vi-VN', options);
+      const displayElem = document.getElementById('time-display');
+      if (displayElem) {
+        displayElem.textContent = formatted;
+      }
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+
+    // Motivational quotes rotation
+    const wishes = [
+      '"Thành công bắt đầu từ những bước đi kiên trì mỗi ngày."',
+      '"Chúc hai anh một ngày ngập tràn năng lượng tích cực và may mắn!"',
+      '"Mọi nỗ lực hôm nay đều là bước đệm cho thành công ngày mai."',
+      '"Làm việc hết mình, bứt phá giới hạn và gặt hái kết quả xuất sắc!"',
+      '"Chúc anh Thông và anh Hoàng hợp tác ăn ý, vạn sự hanh thông!"'
+    ];
+
+    let currentWishIndex = 0;
+    const wishElement = document.getElementById('random-wish');
+    const inspireBtn = document.getElementById('btn-inspire');
+
+    if (inspireBtn && wishElement) {
+      inspireBtn.addEventListener('click', () => {
+        currentWishIndex = (currentWishIndex + 1) % wishes.length;
+        wishElement.style.opacity = '0';
+        setTimeout(() => {
+          wishElement.textContent = wishes[currentWishIndex];
+          wishElement.style.opacity = '1';
+        }, 200);
+      });
+      wishElement.style.transition = 'opacity 0.2s ease';
+    }
+  </script>
+</body>
+</html>
